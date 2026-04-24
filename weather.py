@@ -1,6 +1,12 @@
+# C5/6: WeatherData class
+# This class retrieves weather data from the Open-Meteo API and processes it to find the average/sum, minimum,
+# and maximum values for temperature, wind speed, and precipitation
+
 import requests
 
 class WeatherData:
+    # Initializes WeatherData objects with location and date information. Also prepares variables to store
+    # calculated weather statistics
     def __init__(self,
                  latitude,
                  longitude,
@@ -25,8 +31,10 @@ class WeatherData:
         self.min_precip = None
         self.max_precip = None
 
+    # Sends a request to Open-Mateo API for a specific year
+    # Returns JSON data containing requested weather information
     def get_daily_data(self, year, variable):
-        date = f"{year}-{self.month:02d}-{self.day:02d}"
+        date = f"{year}-{self.month}-{self.day}"
         response = requests.get(
             "https://archive-api.open-meteo.com/v1/archive",
             params={
@@ -40,6 +48,7 @@ class WeatherData:
         )
         return response.json()
 
+    # Retrieves temperature data for past 5 years and calculates average, minimum, and maximum temps
     def get_temperature_data(self):
         temps = []
 
@@ -51,7 +60,7 @@ class WeatherData:
         self.min_temp = min(temps)
         self.max_temp = max(temps)
 
-
+    # Retrieves wind data for past 5 years and calculates average, minimum, and maximum wind speed
     def get_wind_data(self):
         wind = []
 
@@ -63,7 +72,7 @@ class WeatherData:
         self.min_wind = min(wind)
         self.max_wind = max(wind)
 
-
+    # Retrieves precipitation data for past 5 years and calculates sum, minimum, and maximum amounts
     def get_precipitation_data(self):
         precip = []
 
