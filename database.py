@@ -4,7 +4,7 @@
 from sqlalchemy import create_engine, Column, Integer, Float
 from sqlalchemy.orm import declarative_base
 
-# Base class for ORM models
+# Creates a base class that allows SQLAlchemy to map Python classes to database tables
 Base = declarative_base()
 
 # Schema definition for WeatherData

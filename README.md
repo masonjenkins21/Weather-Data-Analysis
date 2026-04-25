@@ -1,7 +1,8 @@
 # Weather Prediction Application
 
 ## Overview
-This program retrieves historical weather data from the Open-Meteo API, calculates statistics (average/sum, minimum, and maximum), and stores the results in a SQLite database using SQLAlchemy.
+This program retrieves historical weather data from the Open-Meteo API, calculates statistics (average/sum, minimum, and maximum), 
+and stores the results in a SQLite database using SQLAlchemy.
 
 ---
 
