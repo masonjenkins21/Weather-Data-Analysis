@@ -22,22 +22,22 @@ chattanooga.get_precipitation_data()
 # C5: Create a database record using calculated weather data
 record = WeatherTable(
     latitude = chattanooga.latitude,
-    longitude=chattanooga.longitude,
-    month=chattanooga.month,
-    day=chattanooga.day,
-    year=chattanooga.year,
+    longitude = chattanooga.longitude,
+    month = chattanooga.month,
+    day = chattanooga.day,
+    year = chattanooga.year,
 
-    avg_temp=chattanooga.avg_temp,
-    min_temp=chattanooga.min_temp,
-    max_temp=chattanooga.max_temp,
+    avg_temp = chattanooga.avg_temp,
+    min_temp = chattanooga.min_temp,
+    max_temp = chattanooga.max_temp,
 
-    avg_wind=chattanooga.avg_wind,
-    min_wind=chattanooga.min_wind,
-    max_wind=chattanooga.max_wind,
+    avg_wind = chattanooga.avg_wind,
+    min_wind = chattanooga.min_wind,
+    max_wind = chattanooga.max_wind,
 
-    sum_precip=chattanooga.sum_precip,
-    min_precip=chattanooga.min_precip,
-    max_precip=chattanooga.max_precip
+    sum_precip = chattanooga.sum_precip,
+    min_precip = chattanooga.min_precip,
+    max_precip = chattanooga.max_precip
 )
 
 # C5: Add record to database and commit transaction
