@@ -4,6 +4,7 @@
 
 import requests
 
+# C1: WeatherData class creation
 class WeatherData:
     # Initializes WeatherData objects with location and date information.
     # Also prepares variables to store calculated weather statistics
@@ -34,6 +35,8 @@ class WeatherData:
         self.min_precip = None
         self.max_precip = None
 
+
+    # C2: API integration
     # Sends a request to the Open-Mateo API for a specific year
     # Returns JSON data containing requested weather information
     def get_daily_data(self, year, variable):
