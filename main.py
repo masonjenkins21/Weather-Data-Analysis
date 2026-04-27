@@ -21,7 +21,7 @@ chattanooga.get_precipitation_data()
 
 # C5: Create a database record using calculated weather data
 record = WeatherTable(
-    latitude=chattanooga.latitude,
+    latitude =chattanooga.latitude,
     longitude=chattanooga.longitude,
     month=chattanooga.month,
     day = chattanooga.day,
