@@ -1,12 +1,12 @@
-# C5/6: WeatherData class
+# C1 & C2: WeatherData class and API integration
 # This class retrieves weather data from the Open-Meteo API and processes it to find the average/sum, minimum,
 # and maximum values for temperature, wind speed, and precipitation
 
 import requests
 
 class WeatherData:
-    # Initializes WeatherData objects with location and date information. Also prepares variables to store
-    # calculated weather statistics
+    # Initializes WeatherData objects with location and date information.
+    # Also prepares variables to store calculated weather statistics
     def __init__(self,
                  latitude,
                  longitude,
@@ -19,19 +19,22 @@ class WeatherData:
         self.day = day
         self.year = year
 
+        # Temperature metrics
         self.avg_temp = None
         self.min_temp = None
         self.max_temp = None
 
+        # Wind metrics
         self.avg_wind = None
         self.min_wind = None
         self.max_wind = None
 
+        # Precipitation metrics
         self.sum_precip = None
         self.min_precip = None
         self.max_precip = None
 
-    # Sends a request to Open-Mateo API for a specific year
+    # Sends a request to the Open-Mateo API for a specific year
     # Returns JSON data containing requested weather information
     def get_daily_data(self, year, variable):
         date = f"{year}-{self.month}-{self.day}"
@@ -50,12 +53,15 @@ class WeatherData:
 
     # Retrieves temperature data for past 5 years and calculates average, minimum, and maximum temps
     def get_temperature_data(self):
+        # List used to store temperature values from each year
         temps = []
 
+        # Loop through current year and previous 4 years
         for y in range(self.year, self.year - 5, -1):
             data = self.get_daily_data(y, "temperature_2m_mean")
             temps.append(data["daily"]["temperature_2m_mean"][0])
 
+        # Calculate average, minimum, and maximum
         self.avg_temp = sum(temps) / len(temps)
         self.min_temp = min(temps)
         self.max_temp = max(temps)

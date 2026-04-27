@@ -1,26 +1,25 @@
-# C6: Main workflow for application
+# C3, C5, and C6: Main workflow for application
 # This file:
-# 1. Creates WeatherData object for a specific location and date
-# 2. Retrieves and processes weather data from Open-Meteo API
-# 3. Stores calculated results in SQLite Database using SQAlchemy
-# 4. Queries the database to verify that the data was stored correctly
+# C3 - Creates WeatherData object for a specific location and date
+# C5 - Stores calculated results in SQLite Database using SQAlchemy
+# C6 - Queries the database to verify that the data was stored correctly
 from weather import WeatherData
 from database import engine, WeatherTable
 from sqlalchemy.orm import sessionmaker
 
-# Creates database session to interact with SQLite database
+# Creates database session to interact with SQLite database amd initializes session instance
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Creates WeatherData object for Chattanooga, TN on November 15, 2025
+# C3: Create WeatherData object for a specific location and date
 chattanooga = WeatherData(35.0456, -85.3097,11, 15, 2025)
 
-# Retrieves and calculates weather statistics using the API
+# C3: Retrieve and process weather data using API methods
 chattanooga.get_temperature_data()
 chattanooga.get_wind_data()
 chattanooga.get_precipitation_data()
 
-# Creates a database record using the calculated weather data
+# C5: Create a database record using calculated weather data
 record = WeatherTable(
     latitude=chattanooga.latitude,
     longitude=chattanooga.longitude,
@@ -41,14 +40,14 @@ record = WeatherTable(
     max_precip=chattanooga.max_precip
 )
 
-# Adds the record to the database and commits the transaction
+# C5: Add record to database and commit transaction
 session.add(record)
 session.commit()
 
-# Queries the database for the most recently inserted record
+# C6: Query database to retrieve stored weather data
 result = session.query(WeatherTable).order_by(WeatherTable.id.desc()).first()
 
-# Displays stored weather statistics to confirm successful storage and retrieval
+# C6: Display retrieved data to verify correct storage and query functionality
 print("Temperature average:", result.avg_temp)
 print("Temperature minimum:", result.min_temp)
 print("Temperature maximum:", result.max_temp)
