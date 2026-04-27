@@ -1,5 +1,5 @@
 # C4: SQLAlchemy ORM setup
-# This file defines the database schema as well as initializes the SQLite database
+# This file defines the database schema, as well as initializes the SQLite database
 # The table stores weather statistics for the chosen location and date
 from sqlalchemy import create_engine, Column, Integer, Float
 from sqlalchemy.orm import declarative_base
