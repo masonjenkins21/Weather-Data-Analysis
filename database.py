@@ -12,7 +12,7 @@ Base = declarative_base()
 class WeatherTable(Base):
     __tablename__ = "weather_data"
 
-    #Primary key uniquely identifying each record
+    # Primary key uniquely identifying each record
     id = Column(Integer, primary_key=True)
 
     # Location data
