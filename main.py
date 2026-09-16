@@ -1,13 +1,13 @@
 # C3, C5, and C6: Main workflow for application
 # This file:
 # C3 - Creates WeatherData object for a specific location and date
-# C5 - Stores calculated results in SQLite Database using SQAlchemy
+# C5 - Stores calculated results in a SQLite database using SQLAlchemy
 # C6 - Queries the database to verify that the data was stored correctly
 from weather import WeatherData
 from database import engine, WeatherTable
 from sqlalchemy.orm import sessionmaker
 
-# Creates database session to interact with SQLite database amd initializes session instance
+# Creates a database session to interact with the SQLite database and initializes a session instance
 Session = sessionmaker(bind=engine)
 session = Session()
 

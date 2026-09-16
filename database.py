@@ -7,7 +7,7 @@ from sqlalchemy.orm import declarative_base
 # Creates a base class that allows SQLAlchemy to map Python classes to database tables
 Base = declarative_base()
 
-# Schema definition for WeatherData class, chich maps to the weather_data table
+# Schema definition for WeatherTable class, which maps to the weather_data table
 # Each row holds values for calculated metrics of a given location and date
 class WeatherTable(Base):
     __tablename__ = "weather_data"
